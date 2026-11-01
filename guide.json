@@ -1,0 +1,110 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "figcraft",
+    "nameCn": "FigCraft",
+    "repoName": "figcraft-deploy-guide",
+    "oneLiner": "把帧、自动布局、组件变体、矢量网络和原型做进一个原生应用，秒开、离线、纯 Rust",
+    "officialRepo": "https://github.com/storytold/figcraft",
+    "officialDocs": "https://github.com/storytold/figcraft#readme",
+    "stars": "4.0k",
+    "license": "Apache-2.0",
+    "highlights": [
+      "纯 Rust 原生：启动快，内存占用低",
+      "离线可用：文件在本地，不依赖云",
+      "核心功能齐：自动布局、组件变体、变量",
+      "五平台安装包：Win / macOS / Linux / FreeBSD / Web",
+      "可自建协作：分享链接与在线编辑",
+      "Apache-2.0，可自由改造"
+    ],
+    "mcpSupport": "项目本身不含 MCP；本仓库的 MCP 只提供安装步骤、版本说明与常见问题。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-11-01",
+    "verification": [
+      [
+        "README 确认 alpha 状态、五平台安装包与自建服务器方式",
+        "已核对 2026-11-01"
+      ],
+      [
+        "Release v0.13.1 的 SHA256SUMS.txt 已下载核对（Windows 与 Linux）",
+        "已核对 2026-11-01"
+      ],
+      [
+        "未实测安装与设计操作",
+        "说明 2026-11-01"
+      ],
+      [
+        "MCP 冒烟：initialize / tools/list 返回 get_guide、search_guide、get_project_info",
+        "已验证 2026-11-01"
+      ],
+      [
+        "非目标宿主调用 get_guide 被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-11-01"
+      ]
+    ],
+    "deploy": {
+      "type": "binary",
+      "steps": [
+        "curl -fL -o figcraft.AppImage https://github.com/storytold/figcraft/releases/download/v0.13.1/figcraft-0.13.1-linux-x86_64.AppImage",
+        "echo \"2fa44efdf4878dea7eb79b1227f274bccb298aab6431d78d0e8370ea6c125474  figcraft.AppImage\" | sha256sum -c -",
+        "chmod +x figcraft.AppImage",
+        "echo \"安装完成：运行 ./figcraft.AppImage，新建文件试自动布局\""
+      ],
+      "stepsPs": [
+        "curl.exe -fL -o figcraft.msi https://github.com/storytold/figcraft/releases/download/v0.13.1/figcraft-0.13.1-windows-x64.msi",
+        "$h=(Get-FileHash .\\figcraft.msi -Algorithm SHA256).Hash.ToLower()",
+        "if ($h -ne \"c9807ae713de0960d4de274b3a16c40837dea364978754e6b123c050b15af424\") { throw \"SHA256 校验失败\" }",
+        "Start-Process msiexec.exe -ArgumentList '/i', \"$PWD\\figcraft.msi\" -Wait",
+        "Write-Host \"安装完成：从开始菜单打开 FigCraft\""
+      ],
+      "source": "https://github.com/storytold/figcraft/releases/latest"
+    },
+    "pitfalls": [
+      "Windows 安装被 SmartScreen 拦：核对 SHA256 后仍报，选「更多信息 → 仍要运行」",
+      "macOS 提示无法验证：在隐私与安全性里允许",
+      "AppImage 打不开：先 chmod +x，缺 FUSE 时用 --appimage-extract",
+      "字体显示不一致：克隆 craft-fonts 到仓库同级目录",
+      "打开 .fig 乱版：属尽力兼容，改用官方工具导出 SVG 再导入",
+      "协作连不上：确认服务端已起、证书与 wss 地址正确",
+      "分享链接被陌生人打开：链接即权限，泄露后重建房间"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/figcraft-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/figcraft-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "FigCraft",
+    "FigCraft 安装",
+    "开源 Figma 替代",
+    "Rust 设计工具",
+    "离线 界面设计",
+    "figcraft 教程",
+    "自建 设计协作",
+    "Figma 文件 导入",
+    "figcraft deploy guide",
+    "原型 设计 工具"
+  ],
+  "topics": [
+    "design-tools",
+    "figma-alternative",
+    "rust",
+    "ui-design",
+    "prototyping",
+    "figcraft"
+  ]
+}

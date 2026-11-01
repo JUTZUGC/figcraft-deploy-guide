@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "figcraft-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}
